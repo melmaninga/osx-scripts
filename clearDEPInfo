@@ -1,0 +1,6 @@
+# Clear "cached" DEP configuration information
+/sbin/fsck -fy
+/sbin/mount -uw /
+rm -rf /var/db/ConfigurationProfiles/
+rm /Library/Keychains/apsd.keychain
+exit
