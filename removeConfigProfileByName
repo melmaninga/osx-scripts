@@ -16,16 +16,13 @@ fi
 }
 
 # Use parameters passed to the script
-# For compatibility with Capser MDM starting at $4, should start at $1 in other use cases
-#if [[ $1 ]]; then remove_Profile "$1"; fi
-#if [[ $2 ]]; then remove_Profile "$2"; fi
-#if [[ $3 ]]; then remove_Profile "$3"; fi
-if [[ $4 ]]; then remove_Profile "$4"; fi
-if [[ $5 ]]; then remove_Profile "$5"; fi
-if [[ $6 ]]; then remove_Profile "$6"; fi
-if [[ $7 ]]; then remove_Profile "$7"; fi
-if [[ $8 ]]; then remove_Profile "$8"; fi
-if [[ $9 ]]; then remove_Profile "$9"; fi
-if [[ $10 ]]; then remove_Profile "$10"; fi
-if [[ $11 ]]; then remove_Profile "$11"; fi
+# Ignore first three parameters for compatibility with Capser MDM, comment out for other use cases
+shift;shift;shift
 
+# Iterate over remainder
+while test ${#} -gt 0
+do
+  echo -n "Removing profile "$1"... "; remove_Profile "$1"
+  shift
+done
+exit 0
