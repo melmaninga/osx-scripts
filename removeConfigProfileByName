@@ -1,12 +1,11 @@
 #!/bin/bash
-
-targetConfigurationProfileName="<INSERT NAME OF PROFILE>"
+targetProfileName="<INSERT NAME OF PROFILE>"
 ## Get UUID of requested MDM Profile
-MDMUUID=`profiles -Lv | grep "$targetConfigurationProfileName" -4 | awk -F": " '/attribute: profileIdentifier/{print $NF}'`
+profileUUID=`profiles -Lv | grep "$targetProfileName" -4 | awk -F": " '/attribute: profileIdentifier/{print $NF}'`
 
 ## Remove said profile, identified by UUID
-if [[ $MDMUUID ]]; then
-    profiles -R -p $MDMUUID
+if [[ $profileUUID ]]; then
+    profiles -R -p $profileUUID
 else
     echo "No Profile Found"
 fi
