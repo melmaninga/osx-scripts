@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define a resusable function
+## Define a resusable function
 remove_Profile() {
 targetProfileName="$1"
 ## Get UUID of requested Configuration Profile
@@ -12,17 +12,19 @@ if [[ $profileUUID ]]; then
 else
     echo "No Profile Found"
 fi
-#sleep 5
+## Take a break between each
+sleep 2
 }
 
-# Use parameters passed to the script
-# Ignore first three parameters for compatibility with Capser MDM, comment out for other use cases
+## Use parameters passed to the script, ignoring first 3 parameters for compatibility with Capser MDM
+## Comment out for other use cases
 shift;shift;shift
 
-# Iterate over remainder
+# Iterate over remaining parameters
 while test ${#} -gt 0
 do
   echo -n "Removing profile "$1"... "; remove_Profile "$1"
   shift
 done
 exit 0
+
