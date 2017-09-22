@@ -1,6 +1,9 @@
 #!/bin/bash
-targetProfileName="<INSERT NAME OF PROFILE>"
-## Get UUID of requested MDM Profile
+
+# Define a resusable function
+remove_Profile() {
+targetProfileName="$1"
+## Get UUID of requested Configuration Profile
 profileUUID=`profiles -Lv | grep "$targetProfileName" -4 | awk -F": " '/attribute: profileIdentifier/{print $NF}'`
 
 ## Remove said profile, identified by UUID
@@ -9,5 +12,20 @@ if [[ $profileUUID ]]; then
 else
     echo "No Profile Found"
 fi
+#sleep 5
+}
 
-sleep 5
+
+if [ "$4" ] then remove_Profile $4; fi
+if [ "$5" ] then remove_Profile $5; fi
+if [ "$6" ] then remove_Profile $6; fi
+if [ "$7" ] then remove_Profile $7; fi
+if [ "$8" ] then remove_Profile $8; fi
+if [ "$9" ] then remove_Profile $9; fi
+if [ "$10" ] then remove_Profile $10; fi
+if [ "$11" ] then remove_Profile $11; fi
+
+
+
+
+
